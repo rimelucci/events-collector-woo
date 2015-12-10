@@ -2,21 +2,19 @@ html{
   height: 100%;
 }
 
-body{
+#body{
   height: 100%;
   overflow: hidden;
-  background-color: beige;
+  background-color: #236F61;
 }
 
 #slideshow{
   display: table-cell;
-  background-color: yellow;
   height: 50%;
 }
 
 #cell2{
   display: table-cell;
-  background-color: red;
   height: 50%;
 }
 
@@ -29,4 +27,14 @@ body{
   width: 75%;
   border-collapse: separate;
   border-spacing: 50px;
+}
+
+.input{
+  margin-top: 5%;
+}
+
+.shadowed{
+  -webkit-box-shadow: 10px 10px 42px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 42px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 42px 0px rgba(0,0,0,0.75);
 }

@@ -3,26 +3,54 @@
   <head>
     <meta charset="utf-8">
     <title>Event Calendar</title> <!--Maybe change name? -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <style src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></style>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/sandstone/bootstrap.min.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
     <link rel="stylesheet" href="styles.css" media="screen" title="main-styles" charset="utf-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/flat-ui/2.2.2/js/flat-ui.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.2.2/css/flat-ui.min.css" media="screen" title="flatUI" charset="utf-8">
   </head>
 
-  <body>
+  <body id="body">
     <div class="container">
-      <div class="table" id="table-container">
-        <div class="jumbotron" id="slideshow">
-          <h1>hello</h1>
-          <p>Will fill in with interactive stuff</p>
+      <div id="table-container">
+        <div class="jumbotron shadowed" id="slideshow">
+          <h2> Search upcoming shows </h2>
+          <form>
+            <div class="input">
+              <label for="artist-input">Artist</label>
+              <input type="text" name="artist" class="form-control" id="artist-input" placeholder="Artist Name...">
+            </div>
+
+            <div class="input">
+              <label for="city-input">City</label>
+              <input type="text" name="city" class="form-control" id="city-input" placeholder="Artist Name...">
+            </div>
+
+            <div class="btn-group input">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                Month <span class="caret"></span>
+              </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </div>
+
+
+            <button class="btn btn-default input" style="float: right">Submit</button>
+          </form>
         </div>
 
 
-        <div class="jumbotron" id="cell2">
+
+        <div class="jumbotron shadowed" id="cell2">
           <h1>hello</h1>
           <p>Will fill in with stuff that moves periodically</p>
         </div>
+
+
       </div>
     </div>
   </body>
