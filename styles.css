@@ -1,0 +1,19 @@
+html{
+  height: 100%;
+}
+
+body{
+  height: 100%;
+  overflow: hidden;
+  background-color: beige;
+}
+
+#slideshow{
+  background-color: yellow;
+  height: 50%;
+}
+
+#cell2{
+  background-color: red;
+  height: 50%;
+}
