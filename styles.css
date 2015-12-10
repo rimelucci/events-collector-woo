@@ -9,11 +9,24 @@ body{
 }
 
 #slideshow{
+  display: table-cell;
   background-color: yellow;
   height: 50%;
 }
 
 #cell2{
+  display: table-cell;
   background-color: red;
   height: 50%;
+}
+
+#table-container{
+  height: 75%;
+  display: table;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  margin: auto;
+  width: 75%;
+  border-collapse: separate;
+  border-spacing: 50px;
 }
