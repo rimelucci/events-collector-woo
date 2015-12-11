@@ -2,6 +2,7 @@ var artist;
 var name, types, dates, time;
 var formattedName;
 var tog=false;
+var storage;
 
 var link="http://api.songkick.com/api/3.0/events.json?apikey=fKR4qB0M4VT3h025&jsoncallback=?"
 
@@ -18,18 +19,37 @@ $("#submit-button").click(
           link = link + "+";
         }
       }
+    }
+    if(tog){
+      link = link + "&location=clientip";
       console.log(link);
     }
+    console.log(link);
+
+    //Start reaching out to api here
+    //The corresponding index of each array should be of the same event
+    name = []; //Names of the events
+    types = []; //types e.g. concert
+    dates = [];
+    time = [];
+    storage = [];
+    $.getJSON(link, function(data) {
+      $.each(storage.append(data["resultsPage"]["results"]["event"]));
+      for (i=0;i<storage.length;i++) {
+        name.append(storage[i]['displayName']);
+        //types.append(storage[i]['type']);
+        //dates.append(storage[i]['start']['date']);
+        //time.append(storage[i]['start']['time']);
+      }
+      console.log(name);
+    });
   });
 
 //If the button is clicked, it toggles it on or off, based on its pervious state
 $('#toggle').click(function(event){
   event.preventDefault();
   tog = !tog;
-  if(tog){
-    link = link + "&location=clientip";
-    console.log(link);
-  }
+
 });
 
 
