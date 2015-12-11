@@ -5,7 +5,11 @@ app = Flask(__name__)
 @app.route("/")
 @app.route("/home")
 def home():
-  return 
+  return render_template("home.html")
+
+@app.route("/<string>")
+def search():
+    return
 
 if __name__=="__main__":
     app.debug = True
