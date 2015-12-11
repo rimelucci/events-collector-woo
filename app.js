@@ -3,7 +3,8 @@ var name, types, dates, time;
 
 $("#submit").click(function(){
   city = $("#city-input").text();
-  artist = $("#artist-input").text();
+  artist = $(":input");
+  console.log(artist);
   formatedCity = city.split(" ");
   formatedName = name.split(" ");
   var link="http://api.songkick.com/api/3.0/events.json?apikey=fKR4qB0M4VT3h025&jsoncallback=?"
@@ -20,7 +21,7 @@ $("#submit").click(function(){
       link = link + word + "+";
     }
   }
-
+  console.log(artist !== '');
   name = []; //Names of the events
   types = []; //types e.g. concert
   dates = [];
@@ -34,5 +35,9 @@ $("#submit").click(function(){
       time.append(storage[i]['start']['time']);
     }
     //do stuff with the data
+    console.log(name);
+    console.log(types);
+    console.log(dates);
+    console.log(time);
   });
 });
