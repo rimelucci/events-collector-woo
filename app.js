@@ -10,7 +10,21 @@ $('#toggle').click(function(event){
 
 $("#submit-button").click(function(){
   artist = $("#artist-input").val();
-  formattedName = artist.split(" ");
+  var formattedName = artist.split(" ");
+  var link="http://api.songkick.com/api/3.0/events.json?apikey=fKR4qB0M4VT3h025&jsoncallback=?"
+
+  //Change the url based on input
+  $("#toggle").click(function(){
+    link = link + "&location=clientip";
+  });
+  if (artist !== "") {
+    link = link + "&artist_name=";
+    for (i=0;i<formatedName.length;i++) {
+      link = link + formatedName[i];
+      link = link + "+";
+      //This should be in the form: part1+part2+part3+...
+    }
+  }
 
   /*formatedName = artist.split(" ");
   var link="http://api.songkick.com/api/3.0/events.json?apikey=fKR4qB0M4VT3h025&jsoncallback=?"
