@@ -1,32 +1,35 @@
-var city, artist;
+var artist;
 var name, types, dates, time;
+var tog=false;
+$('#toggle').click(function(event){
+  event.preventDefault();
+  tog = !tog;
+});
 
 $("#submit").click(function(){
-  city = $("#city-input").text();
-  artist = $(":input");
-  console.log(artist);
-  formatedCity = city.split(" ");
-  formatedName = name.split(" ");
+  artist = document.getElementById("artist-input").value;
+  formatedName = artist.split(" ");
   var link="http://api.songkick.com/api/3.0/events.json?apikey=fKR4qB0M4VT3h025&jsoncallback=?"
   //Change the url based on input
-  if (city !== "") {
-    link = link + "&location=";
-    for (word in formatedCity) {
-      link = link + word + "+";
-    }
-  }
+  $("#toggle").click(function(){
+    link = link + "&location=clientip";
+  });
   if (artist !== "") {
-    link = link + "&artist_name";
-    for (word in formatedName) {
-      link = link + word + "+";
+    link = link + "&artist_name=";
+    for (i=0;i<formatedName.length;i++) {
+      link = link + formatedName[i];
+      link = link + "+";
     }
   }
-  console.log(artist !== '');
+  if (tog) {
+    link = link + "&location=clientip";
+  }
   name = []; //Names of the events
   types = []; //types e.g. concert
   dates = [];
   time = [];
   $.getJSON(link, function(data) {
+    console.log("IN THERE");
     $.each(storage.append(data["resultsPage"]["results"]["event"]));
     for (i=0;i<storage.length;i++) {
       name.append(storage[i]['displayName']);
