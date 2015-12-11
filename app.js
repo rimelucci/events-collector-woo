@@ -6,6 +6,7 @@ $("button").click(function(){
   formatedCity = city.split(" ");
   formatedName = name.split(" ");
   var link="http://api.songkick.com/api/3.0/events.json?apikey=fKR4qB0M4VT3h025&jsoncallback=?"
+  //Change the url based on input
   if (city !== "") {
     link = link + "&location=";
     for (word in formatedCity) {
@@ -15,7 +16,19 @@ $("button").click(function(){
   if (artist !=== "") {
     link = link + "&artist_name" +
   }
+  var storage = []; // list of events and all the data
+  var name = []; //Names of the events
+  var artists = []; //Uris for artists' profiles
   $.getJSON(link, function(data) {
-    console.log(data);
+    $.each(storage.append(data["resultsPage"]["results"]["event"]));
+    for (i in storage) {
+      name.append(i['displayName'])
+    }
+    for (event in storage) {
+      for (i=0;i<event.length;i++) {
+        artists.append(event[i]['artist']['uri']);
+        //We don't necessarily need all of the variables
+      }
+    }
   });
 });
