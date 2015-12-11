@@ -8,9 +8,11 @@ $('#toggle').click(function(event){
   tog = !tog;
 });
 
-$("#submit").click(function(){
-  artist = document.getElementById("artist-input").value;
-  formatedName = artist.split(" ");
+$("#submit-button").click(function(){
+  artist = $("#artist-input").val();
+  formattedName = artist.split(" ");
+
+  /*formatedName = artist.split(" ");
   var link="http://api.songkick.com/api/3.0/events.json?apikey=fKR4qB0M4VT3h025&jsoncallback=?"
   //Change the url based on input
   $("#toggle").click(function(){
@@ -50,5 +52,5 @@ $("#submit").click(function(){
       //This should append the type,date,time to a paragraph on the jumbotron, but we need it to loop
       $("#cell2").append(paragraph).text("Type: " + types[index] + ", Date: " + date[index] + ", Time: " + time[index]);
     });
-  });
+  });*/
 });
