@@ -1,30 +1,51 @@
 var artist;
 var name, types, dates, time;
+var formattedName;
 var tog=false;
+
+var link="http://api.songkick.com/api/3.0/events.json?apikey=fKR4qB0M4VT3h025&jsoncallback=?"
+
+$("#submit-button").click(
+  function(){
+    artist = $("#artist-input").val();
+    formattedName = artist.split(" ");
+    console.log(formattedName);
+    if (artist !== "") {
+      link = link + "&artist_name=";
+      for (var i = 0; i < formattedName.length; i++) {
+        link = link + formattedName[i];
+        if (i < formattedName.length - 1){
+          link = link + "+";
+        }
+      }
+      console.log(link);
+    }
+  });
 
 //If the button is clicked, it toggles it on or off, based on its pervious state
 $('#toggle').click(function(event){
   event.preventDefault();
   tog = !tog;
+  if(tog){
+    link = link + "&location=clientip";
+    console.log(link);
+  }
 });
 
-$("#submit-button").click(function(){
-  artist = $("#artist-input").val();
-  var formattedName = artist.split(" ");
-  var link="http://api.songkick.com/api/3.0/events.json?apikey=fKR4qB0M4VT3h025&jsoncallback=?"
 
-  //Change the url based on input
+
+  /*Change the url based on input
   $("#toggle").click(function(){
     link = link + "&location=clientip";
   });
   if (artist !== "") {
     link = link + "&artist_name=";
-    for (i=0;i<formatedName.length;i++) {
-      link = link + formatedName[i];
+    for (i=0;i<formattedName.length;i++) {
+      link = link + formattedName[i];
       link = link + "+";
       //This should be in the form: part1+part2+part3+...
     }
-  }
+  }*/
 
   /*formatedName = artist.split(" ");
   var link="http://api.songkick.com/api/3.0/events.json?apikey=fKR4qB0M4VT3h025&jsoncallback=?"
@@ -67,4 +88,3 @@ $("#submit-button").click(function(){
       $("#cell2").append(paragraph).text("Type: " + types[index] + ", Date: " + date[index] + ", Time: " + time[index]);
     });
   });*/
-});
