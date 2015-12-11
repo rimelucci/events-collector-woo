@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <title>Event Calendar</title> <!--Maybe change name? -->
     <link rel="stylesheet" href="styles.css" media="screen" title="main-styles" charset="utf-8">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.2.2/css/flat-ui.min.css" media="screen" title="flatUI" charset="utf-8">
   </head>
 
@@ -17,7 +17,7 @@
           <form>
             <div class="input">
               <p>Want to find concerts near you? Turn on your location and we will find out for you!</p>
-              <center><button class="btn btn-default input" name="button">Toggle Location</button></center>
+              <center><button class="btn btn-default input" name="button" id="toggle">Toggle Location</button></center>
             </div>
 
             <center class="input"><h4>or</h4></center>
@@ -27,7 +27,7 @@
               <input type="text" name="artist" class="form-control" id="artist-input" placeholder="Artist Name...">
             </div>
 
-            <button class="btn btn-default input" style="float: right">Submit</button>
+            <button class="btn btn-default input" style="float: right" id="submit">Submit</button>
           </form>
         </div>
 
@@ -43,5 +43,6 @@
     </div>
   </body>
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/flat-ui/2.2.2/js/flat-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.2.2/js/flat-ui.min.js"></script>
+  <script src="app.js"></script>
 </html>
