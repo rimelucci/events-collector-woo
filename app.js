@@ -1,5 +1,5 @@
 var artist;
-var name, types, dates, time;
+var types, dates, time;
 var formattedName;
 var tog=false;
 var storage;
@@ -9,8 +9,8 @@ var link="http://api.songkick.com/api/3.0/events.json?apikey=fKR4qB0M4VT3h025&js
 $("#submit-button").click(
   function(){
     artist = $("#artist-input").val();
+    $("#artist-input").val("");
     formattedName = artist.split(" ");
-    console.log(formattedName);
     if (artist !== "") {
       link = link + "&artist_name=";
       for (var i = 0; i < formattedName.length; i++) {
@@ -20,28 +20,35 @@ $("#submit-button").click(
         }
       }
     }
-    if(tog){
+    if (tog) {
       link = link + "&location=clientip";
-      console.log(link);
     }
-    console.log(link);
 
     //Start reaching out to api here
     //The corresponding index of each array should be of the same event
-    name = []; //Names of the events
-    types = []; //types e.g. concert
-    dates = [];
-    time = [];
-    storage = [];
+    var name = new Array(); //Names of the events
+    var types = new Array(); //types e.g. concert
+    var dates = new Array();
+    var time = new Array();
+    var storage = new Array();
     $.getJSON(link, function(data) {
-      $.each(storage.append(data["resultsPage"]["results"]["event"]));
-      for (i=0;i<storage.length;i++) {
-        name.append(storage[i]['displayName']);
-        //types.append(storage[i]['type']);
-        //dates.append(storage[i]['start']['date']);
-        //time.append(storage[i]['start']['time']);
+      if (data['resultsPage']['totalEntries'] != 0) {
+        var events = data["resultsPage"]["results"]["event"];
+        $(events).each(function() {
+          storage.push(this);
+        });
+        $(storage).each(function() {
+          name.push(this['displayName']);
+          types.push(this['type']);
+          dates.push(this['start']['date']);
+          time.push(this['start']['time']);
+        });
+        //Do stuff with all the results
+
       }
-      console.log(name);
+      else {
+        //Do stuff if no results are found
+      }
     });
   });
 
