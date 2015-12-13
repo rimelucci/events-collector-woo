@@ -1,13 +1,14 @@
 var artist;
-var types, dates, time;
 var formattedName;
 var tog=false;
-var storage;
 
 var link="http://api.songkick.com/api/3.0/events.json?apikey=fKR4qB0M4VT3h025&jsoncallback=?"
 
 $("#submit-button").click(
   function(){
+    if ($("#error").length) {
+      $("#error").remove();
+    }
     artist = $("#artist-input").val();
     $("#artist-input").val("");
     formattedName = artist.split(" ");
@@ -43,11 +44,12 @@ $("#submit-button").click(
           dates.push(this['start']['date']);
           time.push(this['start']['time']);
         });
-        //Do stuff with all the results
 
+        start();
       }
       else {
-        //Do stuff if no results are found
+        var message = "Error: Artist not found";
+        $("#slideshow").append("<p style='color:red' id='error'>" + message + "</p>");
       }
     });
   });
@@ -56,10 +58,20 @@ $("#submit-button").click(
 $('#toggle').click(function(event){
   event.preventDefault();
   tog = !tog;
-
 });
 
+var interval;
+function start() {
+  interval = setInterval(slideShow,10000);
+};
 
+function slideShow() {
+  //make slide
+};
+
+function stop() {
+  clearInterval(interval);
+}
 
   /*Change the url based on input
   $("#toggle").click(function(){
