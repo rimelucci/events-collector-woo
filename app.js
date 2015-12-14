@@ -91,9 +91,12 @@ function slideShow(name, types, dates, time, tickets) {
   slide.append("<p>Type: "+types[count]+"</p>");
   slide.append("<p>Date: "+dates[count]+' Time: '+time[count]+"</p>");
   if (tickets[count] !== null) {
-    slide.append("<p><a href='"+tickets[count]+"'>Tickets</a></p>");
+    //slide.append("<p><a href='"+tickets[count]+"'>Tickets</a></p>");
+    slide.append("<a href='"+tickets[count]+"' class='btn btn-block btn-lg btn-danger'>Tickets</a>")
   }
-  
+
+
+
   if (count >= name.length - 1) {
     count = 0;
   }
