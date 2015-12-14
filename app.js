@@ -59,7 +59,7 @@ $("#submit-button").click(
           dates.push(this['start']['date']);
           time.push(this['start']['time']);
         });
-
+        console.log("here");
         interval = setInterval(slideShow(name, types, dates, time), 3000);
       }
       else {
@@ -77,9 +77,9 @@ $('#toggle').click(function(event){
 
 function slideShow(name, types, dates, time) {
   //make slide
-  var slide = $("#moving-thing");
+  var slide = $("#moving");
   console.log(slide);
-  slide.remove();
+  slide.empty();
   slide.append("<h1>"+name[count]+"</h1>");
   slide.append("<p>Type: "+types[count]+"</p>");
   slide.append("<p>Date: "+dates[count]+' Time: '+time[count]+"</p>");
