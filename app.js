@@ -61,17 +61,8 @@ $("#submit-button").click(
         });
         console.log("here");
         //interval = setInterval(slideShow(name, types, dates, time), 3000);
-        interval = setInterval(function(name, types, dates, time){
-          var slide = $("#moving");
-          console.log("slide" + count);
-          slide.empty(); // isn't working yet come back to it soon
-          slide.append("<h3>"+name[count]+"</h3>");
-          slide.append("<p>Type: "+types[count]+"</p>");
-          slide.append("<p>Date: "+dates[count]+' Time: '+time[count]+"</p>");
-          if (count >= name.length - 1) {
-            count = 0;
-          }
-          count = count + 1;
+        interval = setInterval(function(){
+            slideShow(name, types, dates, time);
         }, 3000);
 
       }
@@ -88,7 +79,7 @@ $('#toggle').click(function(event){
   tog = !tog;
 });
 
-/*function slideShow(name, types, dates, time) {
+function slideShow(name, types, dates, time) {
   //make slide
   var slide = $("#moving");
   console.log("slide" + count + "; name:" + name.length);
@@ -100,7 +91,7 @@ $('#toggle').click(function(event){
     count = 0;
   }
   count = count + 1;
-};*/
+};
 
 
 
