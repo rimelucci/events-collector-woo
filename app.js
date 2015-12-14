@@ -60,7 +60,7 @@ $("#submit-button").click(
           time.push(this['start']['time']);
         });
 
-        slideShow(name, types, dates, time);
+        interval = setInterval(slideShow(name, types, dates, time), 3000);
       }
       else {
         var message = "Error: Artist not found";
@@ -75,12 +75,11 @@ $('#toggle').click(function(event){
   tog = !tog;
 });
 
-/*
 function slideShow(name, types, dates, time) {
   //make slide
   var slide = $("#moving-thing");
   console.log(slide);
-  slide.remove();
+  slide.empty();
   slide.append("<h1>"+name[count]+"</h1>");
   slide.append("<p>Type: "+types[count]+"</p>");
   slide.append("<p>Date: "+dates[count]+' Time: '+time[count]+"</p>");
@@ -90,9 +89,9 @@ function slideShow(name, types, dates, time) {
     count = 0;
   }
   count = count + 1;
-  console.log(count);
 };
-*/
+
+
 function stop() {
   clearTimeout(interval);
 }
