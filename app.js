@@ -33,6 +33,7 @@ $("#submit-button").click(
     var types = new Array(); //types e.g. concert
     var dates = new Array();
     var time = new Array();
+    var tickets = new Array();
     var storage = new Array();
     $.getJSON(link, function(data) {
       if (data['resultsPage']['totalEntries'] != 0) {
@@ -58,11 +59,13 @@ $("#submit-button").click(
           types.push(this['type']);
           dates.push(this['start']['date']);
           time.push(this['start']['time']);
+          tickets.push(this['venue']['uri']);
         });
         console.log("here");
         //interval = setInterval(slideShow(name, types, dates, time), 3000);
+        console.log(tickets);
         interval = setInterval(function(){
-            slideShow(name, types, dates, time);
+            slideShow(name, types, dates, time, tickets);
         }, 3000);
 
       }
@@ -79,7 +82,7 @@ $('#toggle').click(function(event){
   tog = !tog;
 });
 
-function slideShow(name, types, dates, time) {
+function slideShow(name, types, dates, time, tickets) {
   //make slide
   var slide = $("#moving");
   console.log("slide" + count + "; name:" + name.length);
@@ -87,6 +90,10 @@ function slideShow(name, types, dates, time) {
   slide.append("<h3>"+name[count]+"</h3>");
   slide.append("<p>Type: "+types[count]+"</p>");
   slide.append("<p>Date: "+dates[count]+' Time: '+time[count]+"</p>");
+  if (tickets[count] !== null) {
+    slide.append("<p><a href='"+tickets[count]+"'>Tickets</a></p>");
+  }
+  
   if (count >= name.length - 1) {
     count = 0;
   }
