@@ -60,7 +60,20 @@ $("#submit-button").click(
           time.push(this['start']['time']);
         });
         console.log("here");
-        interval = setInterval(slideShow(name, types, dates, time), 3000);
+        //interval = setInterval(slideShow(name, types, dates, time), 3000);
+        interval = setInterval(function(name, types, dates, time){
+          var slide = $("#moving");
+          console.log("slide" + count);
+          slide.empty(); // isn't working yet come back to it soon
+          slide.append("<h3>"+name[count]+"</h3>");
+          slide.append("<p>Type: "+types[count]+"</p>");
+          slide.append("<p>Date: "+dates[count]+' Time: '+time[count]+"</p>");
+          if (count >= name.length - 1) {
+            count = 0;
+          }
+          count = count + 1;
+        }, 3000);
+
       }
       else {
         var message = "Error: Artist not found";
@@ -75,24 +88,26 @@ $('#toggle').click(function(event){
   tog = !tog;
 });
 
-function slideShow(name, types, dates, time) {
+/*function slideShow(name, types, dates, time) {
   //make slide
   var slide = $("#moving");
-  console.log(slide);
-  slide.empty();
-  slide.append("<h1>"+name[count]+"</h1>");
+  console.log("slide" + count + "; name:" + name.length);
+  slide.empty(); // isn't working yet come back to it soon
+  slide.append("<h3>"+name[count]+"</h3>");
   slide.append("<p>Type: "+types[count]+"</p>");
   slide.append("<p>Date: "+dates[count]+' Time: '+time[count]+"</p>");
   if (count >= name.length - 1) {
     count = 0;
   }
   count = count + 1;
-};
+};*/
 
 
-function stop() {
+
+
+/*function stop() {
   clearTimeout(interval);
-}
+}*/
 
   /*Change the url based on input
   $("#toggle").click(function(){
