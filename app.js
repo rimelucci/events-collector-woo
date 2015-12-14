@@ -1,6 +1,8 @@
 var artist;
 var formattedName;
 var tog=false;
+var interval;
+var count=0;
 
 var link="http://api.songkick.com/api/3.0/events.json?apikey=fKR4qB0M4VT3h025&jsoncallback=?"
 
@@ -39,13 +41,26 @@ $("#submit-button").click(
           storage.push(this);
         });
         $(storage).each(function() {
+          if (this['displayName'] === null) {
+            this['displayName'] = "N/A";
+          }
+          if (this['type'] === null) {
+            this['type'] = "N/A";
+          }
+          if (this['start']['date'] === null) {
+            this['start']['date'] = "N/A";
+          }
+          if (this['start']['time'] === null) {
+            this['start']['time'] = "N/A";
+          }
+
           name.push(this['displayName']);
           types.push(this['type']);
           dates.push(this['start']['date']);
           time.push(this['start']['time']);
         });
 
-        start();
+        slideShow(name, types, dates, time);
       }
       else {
         var message = "Error: Artist not found";
@@ -60,17 +75,26 @@ $('#toggle').click(function(event){
   tog = !tog;
 });
 
-var interval;
-function start() {
-  interval = setInterval(slideShow,10000);
-};
-
-function slideShow() {
+/*
+function slideShow(name, types, dates, time) {
   //make slide
+  var slide = $("#moving-thing");
+  console.log(slide);
+  slide.remove();
+  slide.append("<h1>"+name[count]+"</h1>");
+  slide.append("<p>Type: "+types[count]+"</p>");
+  slide.append("<p>Date: "+dates[count]+' Time: '+time[count]+"</p>");
+  console.log(count);
+  console.log(tog);
+  if (count >= name.length - 1) {
+    count = 0;
+  }
+  count = count + 1;
+  console.log(count);
 };
-
+*/
 function stop() {
-  clearInterval(interval);
+  clearTimeout(interval);
 }
 
   /*Change the url based on input
