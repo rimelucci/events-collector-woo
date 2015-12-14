@@ -79,12 +79,10 @@ function slideShow(name, types, dates, time) {
   //make slide
   var slide = $("#moving-thing");
   console.log(slide);
-  slide.empty();
+  slide.remove();
   slide.append("<h1>"+name[count]+"</h1>");
   slide.append("<p>Type: "+types[count]+"</p>");
   slide.append("<p>Date: "+dates[count]+' Time: '+time[count]+"</p>");
-  console.log(count);
-  console.log(tog);
   if (count >= name.length - 1) {
     count = 0;
   }
